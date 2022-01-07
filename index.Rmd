@@ -1,0 +1,126 @@
+---
+title: "Clean Code in R"
+subtitle: "How to write human-readabe code?"
+author: "Lenard Dome"
+date: "`r format(Sys.time(), '%b %d, %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ["libs/default.css", "libs/default-fonts.css"]
+    seal: true 
+    self_contained: false
+    nature:
+      ratio: "20:11"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class: middle center inverse
+
+```{r, include = FALSE}
+library(emo)
+library(fontawesome)
+```
+
+# The Statement
+
+All things are well.
+
+---
+
+class: middle left inverse
+
+# Human-readable code
+
+### Today we will focus on:
+
+- `r emo::ji("document")` Documentations
+- `r fa("code")` Readable Code
+- `r emo::ji("robot")` Functional Programming
+
+### Upon requests, we can talk more about:
+
+- `r fa("code-branch")` Version Control
+- `r emo::ji("whale")` R Environments and maybe Dockers
+- `r emo::ji("check")` Independent Tests.
+
+---
+
+class: middle center inverse
+
+# Documentations
+
+---
+
+class: middle center inverse
+
+# Code Styling
+
+---
+
+class: middle center inverse
+
+# Functional Programming
+
+<!-- TODO: two column images -->
+
+---
+
+class: middle left inverse
+
+# Exercise 1
+
+1. Grab your *incredibly old* R script from a year ago, maybe even try to `source("my_file.R")` to see if you can still run it without any human intervention.
+
+2. `linter` your code. Simply take the code below and run it:
+
+```{r, eval = FALSE, error = FALSE}
+## particularly clumsy loading of package
+if (!any("lintr" %in% installed.packages()[, 'Package'])) {
+  install.packages("lintr")
+} else {
+  library("lintr")
+}
+
+## linter your code
+lintr::lint("path/to/your_file.R")
+```
+
+---
+
+class: middle left inverse
+
+# Exercise 2
+
+<!-- TODO: add link to bad script -->
+
+Here, you will look through a script and do three things:
+
+1. **Comment** and **Prettify** code as we discussed it before
+2. **Write** a function to get rid of redundant code
+3. **Document** said function with `roxygen2`
+
+---
+
+class: middle left inverse
+
+# Resources
+
+Here are a list of resources to help you become your better self (*unashamed new-wave bookshop sales pitch*):
+
+1. The Turing Way
+2. renv
+3. Functional Programming in R
+4. Google's R Style Guide
+
+---
+
+# Contacts
+
+`r emo::ji("email")` lenard.dome@plymouth.ac.uk
+
