@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 # Clean Code in R
 ## How to write human-readabe code?
 ### Lenard Dome
-### Jan 07, 2022
+### Jan 11, 2022
 
 ---
 
@@ -22,51 +22,241 @@ class: center, middle, inverse, title-slide
 
 
 
-class: middle center inverse
+class: middle left inverse
 
 
 
-# The Statement
+# Today we will focus on:
 
-All things are well.
+- 📜 Documentations and Commenting Code
+- <svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/></svg> Readable Code
+- 🤖 Functional Programming and Programming with Functions
 
 ---
 
 class: middle left inverse
 
-# Human-readable code
-
-### Today we will focus on:
-
-- 📜 Documentations
-- <svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/></svg> Readable Code
-- 🤖 Functional Programming
-
-### Upon requests, we can talk more about:
-
-- <svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M384 144c0-44.2-35.8-80-80-80s-80 35.8-80 80c0 36.4 24.3 67.1 57.5 76.8-.6 16.1-4.2 28.5-11 36.9-15.4 19.2-49.3 22.4-85.2 25.7-28.2 2.6-57.4 5.4-81.3 16.9v-144c32.5-10.2 56-40.5 56-76.3 0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-34-21.2-63.1-51.2-74.6 3.1-5.2 7.8-9.8 14.9-13.4 16.2-8.2 40.4-10.4 66.1-12.8 42.2-3.9 90-8.4 118.2-43.4 14-17.4 21.1-39.8 21.6-67.9 31.6-10.8 54.4-40.7 54.4-75.9zM80 64c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16zm0 384c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16-7.2 16-16 16zm224-320c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16z"/></svg> Version Control
-- 🐳 R Environments and maybe Dockers
-- ✅ Independent Tests.
-
----
-
-class: middle center inverse
-
 # Documentations
 
+**Documentations explains what you do and how**
+
+- Manual for using your code and reproducing
+- Documenting functions: use [standard R documentation](https://cran.r-project.org/doc/manuals/R-exts.html#Writing-R-documentation-files)
+- Documenting your analysis, use [vignettes](https://r-pkgs.org/vignettes.html).
+- Examples of Vignettes: [BEST package](https://cran.r-project.org/web/packages/BEST/vignettes/BEST.pdf), [dplyr of the tidyverse family](https://cran.r-project.org/web/packages/dplyr/vignettes/base.html).
+
 ---
 
-class: middle center inverse
+class: middle left inverse
+
+# Commenting Code
+
+**Comments tell people what the code does, not what you want to do**
+
+- Refers to things in paper, e.g. `## effect size, Equation 14 in Cohen (19XX)`
+- Separates chunks of code, e.g. `## analyse reaction times` or `## preprocessing`
+- Explains purpose of code, e.g. `## run costum function for t-test on each ppt`
+- They live in your R script.
+- Don't overdo it. Bad example is
+
+
+```r
+# Set x to 5
+x &lt;- 5
+```
+
+
+---
+
+class: middle left inverse
+
+# Roxygen2
+
+.pull-left[
+
+Cons:
+
+- The **source code** (your R script) is where the code and only the code lives.
+- Only have rudimentary support for documentations. 
+
+Pros:
+
+- …but still better than nothing.
+- Good for short functions you came up in your analysis.
+
+]
+
+.pull-right[
+
+[roxygen2](https://roxygen2.r-lib.org/) will turn your in-line comments beginning with `#'` to R documentation.
+
+
+```r
+#' Add together two numbers
+#'
+#' @param x A number
+#' @param y A number
+#' @return The sum of \code{x} and \code{y}
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+add &lt;- function(x, y) {
+  x + y
+}
+```
+
+Still, don't write an essay!
+
+]
+
+
+.footnote[
+.bold[*] Check out this article for some more cons and pros on the [roxygen way](https://www.r-bloggers.com/2018/02/documenting-r-packages-roxygen2-vs-direct-rd-input/)
+]
+
+???
+roxygen2 is the developers' way to not do real documentation but only use comments
+
+---
+
+class: middle left inverse
 
 # Code Styling
 
+- Consistent spacing.
+- Line length is is below 100.
+- Consistent naming with `snake_case`. 
+
+Have a look at the following resources:
+
+- [Google's R Style Guide](https://google.github.io/styleguide/Rguide.html)
+- [Tidyverse Style Guide](https://style.tidyverse.org/)
+
+.footnote[
+.bold[*] - Fun article about looking at code: [Code Review Withouth Your Glasses](https://robertheaton.com/2014/06/20/code-review-without-your-eyes/)
+
+]
+
 ---
 
-class: middle center inverse
+class: middle left inverse
 
 # Functional Programming
 
-&lt;!-- TODO: two column images --&gt;
+Get all even numbers up to 200000 using S-style vector allocation:
+
+.pull-left[
+
+**Imperative-style programming**
+
+
+```r
+x &lt;- c()
+for(i in 1:200000){
+    if(i %% 2 == 0){
+        x &lt;- c(x, i)
+    }
+}
+```
+
+]
+
+.pull-right[
+
+**FP-style vectorised operation**
+
+
+```r
+a &lt;- 1:200000
+x &lt;- a[a %% 2 == 0\]
+```
+
+**Slow tidyverse method**
+
+
+```r
+## or slow tidyverse
+x &lt;- tibble(i = 1:200000) %&gt;%
+  filter(i %% 2 == 0)
+```
+
+]
+
+.footnote[
+.bold[*]
+Check out the book [Functioncal Programming in R](http://adv-r.had.co.nz/Functional-programming.html).
+
+.bold[*]
+More examples can be found in [Advanced R](http://adv-r.had.co.nz/Functional-programming.html)
+
+]
+
+---
+
+class: middle left inverse
+
+# Programming with Functions
+
+.pull-left[
+
+
+```r
+library(BayesFactor)
+
+## subset data
+test_A &lt;- dta %&gt;%
+  filter(stimuli == "A") %&gt;%
+  summarise(mean(response))
+## test against chance
+ttestBF(formula = test_A$prob, mu = 0.50)
+
+## subset data
+test_B &lt;- dta %&gt;%
+  filter(stimuli == "B") %&gt;%
+  summarise(mean(response))
+## test against chance
+ttestBF(formula = test_B$prob, mu = 0.50)
+
+## subset data
+test_C &lt;- dta %&gt;%
+  filter(stimuli == "C") %&gt;%
+  summarise(mean(response))
+## run test against chance
+ttestBF(formula = test_C$prob, mu = 0.50)
+```
+
+This goes on for 4 more times.
+
+]
+
+.pull-right[
+
+
+```r
+library(BayesFactor)
+
+costum_BF &lt;- function(data, stimulus, null) {
+  ## run test against chance
+  outcome &lt;- ttestBF(x = data$prob, mu = null)
+  out &lt;- data.frame(outcome)$bf
+  ## tidy up output
+  out_data &lt;- cbind(stimuli = unique(data$abstim), bf = out, null = null)
+  out_data &lt;- data.frame(out_data) ## group_modify needs a data.frame
+  return(out_data)
+}
+
+
+## apply test to each stimuli
+tdta %&gt;%
+  group_by(abstim) %&gt;%
+  group_modify(~ costum_BF(data = .x, stimulus = Groups, null = 0.50))
+```
+
+It is easy to read 👓 and easier to debug ⚠️  or hack 👺.
+
+]
+
+.footnote[.red.bold[*] Apparently, the 5th circle of R Hell is reserved for people who do not write functions, check out [R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)]
 
 ---
 
@@ -120,14 +310,24 @@ Here are a list of resources to help you become your better self (*unashamed new
 
 ---
 
-# Contacts
+class: middle left inverse
+
+# The End
 
 ✉️ lenard.dome@plymouth.ac.uk
+
+slides are availabe at [lenarddome.github.io/cleanRcode](link)
+
+## Potential Future Extensions
+
+- <svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M384 144c0-44.2-35.8-80-80-80s-80 35.8-80 80c0 36.4 24.3 67.1 57.5 76.8-.6 16.1-4.2 28.5-11 36.9-15.4 19.2-49.3 22.4-85.2 25.7-28.2 2.6-57.4 5.4-81.3 16.9v-144c32.5-10.2 56-40.5 56-76.3 0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-34-21.2-63.1-51.2-74.6 3.1-5.2 7.8-9.8 14.9-13.4 16.2-8.2 40.4-10.4 66.1-12.8 42.2-3.9 90-8.4 118.2-43.4 14-17.4 21.1-39.8 21.6-67.9 31.6-10.8 54.4-40.7 54.4-75.9zM80 64c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16zm0 384c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16-7.2 16-16 16zm224-320c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16z"/></svg> Version Control
+- 🐳 R Environments and maybe Dockers
+- ✅ Independent Tests.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"ratio": "20:11",
+"ratio": "21:11",
 "highlightStyle": "github",
 "highlightLines": true,
 "countIncrementalSlides": false

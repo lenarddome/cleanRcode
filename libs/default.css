@@ -1,14 +1,32 @@
 a, a > code {
-  color: rgb(249, 38, 114);
+  color: #66D9EF;
   text-decoration: none;
 }
+
 .footnote {
   position: absolute;
   bottom: 3em;
   padding-right: 4em;
-  font-size: 90%;
+  font-size: 50%;
 }
 .remark-code-line-highlighted     { background-color: #f3f3f3; }
+
+.hljs-github .hljs {
+	display: block;
+	overflow-x: auto;
+	padding: .5em;
+	color: #dfdede;
+	background: #0f0f0f;
+}
+
+.hljs-github .hljs-keyword, .hljs-github .hljs-selector-tag, .hljs-github .hljs-subst {
+	color: #A6E22E;
+	font-weight: bold;
+}
+
+.hljs-github .hljs-string, .hljs-github .hljs-doctag {
+	color: #F92672;
+}
 
 .inverse {
   background-color: #272822;
@@ -21,7 +39,7 @@ a, a > code {
 }
 
 
-inverse h2, .inverse h3 {
+.inverse h2, .inverse h3 {
   color: #f3f3f3;
 }
 

@@ -9,7 +9,7 @@ output:
     seal: true 
     self_contained: false
     nature:
-      ratio: "20:11"
+      ratio: "21:11"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
@@ -20,54 +20,239 @@ output:
 options(htmltools.dir.version = FALSE)
 ```
 
-class: middle center inverse
+class: middle left inverse
 
 ```{r, include = FALSE}
 library(emo)
 library(fontawesome)
 ```
 
-# The Statement
+# Today we will focus on:
 
-All things are well.
+- `r emo::ji("document")` Documentations and Commenting Code
+- `r fa("code")` Readable Code
+- `r emo::ji("robot")` Functional Programming and Programming with Functions
 
 ---
 
 class: middle left inverse
 
-# Human-readable code
-
-### Today we will focus on:
-
-- `r emo::ji("document")` Documentations
-- `r fa("code")` Readable Code
-- `r emo::ji("robot")` Functional Programming
-
-### Upon requests, we can talk more about:
-
-- `r fa("code-branch")` Version Control
-- `r emo::ji("whale")` R Environments and maybe Dockers
-- `r emo::ji("check")` Independent Tests.
-
----
-
-class: middle center inverse
-
 # Documentations
 
+**Documentations explains what you do and how**
+
+- Manual for using your code and reproducing
+- Documenting functions: use [standard R documentation](https://cran.r-project.org/doc/manuals/R-exts.html#Writing-R-documentation-files)
+- Documenting your analysis, use [vignettes](https://r-pkgs.org/vignettes.html).
+- Examples of Vignettes: [BEST package](https://cran.r-project.org/web/packages/BEST/vignettes/BEST.pdf), [dplyr of the tidyverse family](https://cran.r-project.org/web/packages/dplyr/vignettes/base.html).
+
 ---
 
-class: middle center inverse
+class: middle left inverse
+
+# Commenting Code
+
+**Comments tell people what the code does, not what you want to do**
+
+- Refers to things in paper, e.g. `## effect size, Equation 14 in Cohen (19XX)`
+- Separates chunks of code, e.g. `## analyse reaction times` or `## preprocessing`
+- Explains purpose of code, e.g. `## run costum function for t-test on each ppt`
+- They live in your R script.
+- Don't overdo it. Bad example is
+
+```{r}
+# Set x to 5
+x <- 5
+```
+
+
+---
+
+class: middle left inverse
+
+# Roxygen2
+
+.pull-left[
+
+Cons:
+
+- The **source code** (your R script) is where the code and only the code lives.
+- Only have rudimentary support for documentations. 
+
+Pros:
+
+- …but still better than nothing.
+- Good for short functions you came up in your analysis.
+
+]
+
+.pull-right[
+
+[roxygen2](https://roxygen2.r-lib.org/) will turn your in-line comments beginning with `#'` to R documentation.
+
+```{r}
+#' Add together two numbers
+#'
+#' @param x A number
+#' @param y A number
+#' @return The sum of \code{x} and \code{y}
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+add <- function(x, y) {
+  x + y
+}
+```
+
+Still, don't write an essay!
+
+]
+
+
+.footnote[
+.bold[*] Check out this article for some more cons and pros on the [roxygen way](https://www.r-bloggers.com/2018/02/documenting-r-packages-roxygen2-vs-direct-rd-input/)
+]
+
+???
+roxygen2 is the developers' way to not do real documentation but only use comments
+
+---
+
+class: middle left inverse
 
 # Code Styling
 
+- Consistent spacing.
+- Line length is is below 100.
+- Consistent naming with `snake_case`. 
+
+Have a look at the following resources:
+
+- [Google's R Style Guide](https://google.github.io/styleguide/Rguide.html)
+- [Tidyverse Style Guide](https://style.tidyverse.org/)
+
+.footnote[
+.bold[*] - Fun article about looking at code: [Code Review Withouth Your Glasses](https://robertheaton.com/2014/06/20/code-review-without-your-eyes/)
+
+]
+
 ---
 
-class: middle center inverse
+class: middle left inverse
 
 # Functional Programming
 
-<!-- TODO: two column images -->
+Get all even numbers up to 200000 using S-style vector allocation:
+
+.pull-left[
+
+**Imperative-style programming**
+
+```{r, eval = FALSE}
+x <- c()
+for(i in 1:200000){
+    if(i %% 2 == 0){
+        x <- c(x, i)
+    }
+}
+```
+
+]
+
+.pull-right[
+
+**FP-style vectorised operation**
+
+```{r, eval = FALSE}
+a <- 1:200000
+x <- a[a %% 2 == 0\]
+```
+
+**Slow tidyverse method**
+
+```{r, eval = FALSE}
+## or slow tidyverse
+x <- tibble(i = 1:200000) %>%
+  filter(i %% 2 == 0)
+
+```
+
+]
+
+.footnote[
+.bold[*]
+Check out the book [Functioncal Programming in R](http://adv-r.had.co.nz/Functional-programming.html).
+
+.bold[*]
+More examples can be found in [Advanced R](http://adv-r.had.co.nz/Functional-programming.html)
+
+]
+
+---
+
+class: middle left inverse
+
+# Programming with Functions
+
+.pull-left[
+
+```{r, eval = FALSE}
+library(BayesFactor)
+
+## subset data
+test_A <- dta %>%
+  filter(stimuli == "A") %>%
+  summarise(mean(response))
+## test against chance
+ttestBF(formula = test_A$prob, mu = 0.50)
+
+## subset data
+test_B <- dta %>%
+  filter(stimuli == "B") %>%
+  summarise(mean(response))
+## test against chance
+ttestBF(formula = test_B$prob, mu = 0.50)
+
+## subset data
+test_C <- dta %>%
+  filter(stimuli == "C") %>%
+  summarise(mean(response))
+## run test against chance
+ttestBF(formula = test_C$prob, mu = 0.50)
+```
+
+This goes on for 4 more times.
+
+]
+
+.pull-right[
+
+```{r, eval = FALSE}
+library(BayesFactor)
+
+costum_BF <- function(data, stimulus, null) {
+  ## run test against chance
+  outcome <- ttestBF(x = data$prob, mu = null)
+  out <- data.frame(outcome)$bf
+  ## tidy up output
+  out_data <- cbind(stimuli = unique(data$abstim), bf = out, null = null)
+  out_data <- data.frame(out_data) ## group_modify needs a data.frame
+  return(out_data)
+}
+
+
+## apply test to each stimuli
+tdta %>%
+  group_by(abstim) %>%
+  group_modify(~ costum_BF(data = .x, stimulus = Groups, null = 0.50))
+
+```
+
+It is easy to read 👓 and easier to debug ⚠️  or hack 👺.
+
+]
+
+.footnote[.red.bold[*] Apparently, the 5th circle of R Hell is reserved for people who do not write functions, check out [R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)]
 
 ---
 
@@ -120,7 +305,16 @@ Here are a list of resources to help you become your better self (*unashamed new
 
 ---
 
-# Contacts
+class: middle left inverse
+
+# The End
 
 `r emo::ji("email")` lenard.dome@plymouth.ac.uk
 
+slides are availabe at [lenarddome.github.io/cleanRcode](link)
+
+## Potential Future Extensions
+
+- `r fa("code-branch")` Version Control
+- `r emo::ji("whale")` R Environments and maybe Dockers
+- `r emo::ji("check")` Independent Tests.
