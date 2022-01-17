@@ -298,7 +298,7 @@ class: middle left inverse
 
 # Resource Dump
 
-Here are a list of resources to help you become your better self (*unashamed new-wave bookshop sales pitch*):
+Here are a list of resources to help you become your betteR self (*unashamed new-wave bookshop sales pitch*):
 
 1. [The Turing Way](https://the-turing-way.netlify.app/welcome.html)
 2. [Functional Programming in R](http://adv-r.had.co.nz/Functional-programming.html)
@@ -313,7 +313,7 @@ class: middle left inverse
 
 `r emo::ji("email")` lenard.dome@plymouth.ac.uk
 
-slides are availabe at [lenarddome.github.io/cleanRcode](link)
+slides are availabe at [lenarddome.github.io/cleanRcode](lenarddome.github.io/cleanRcode)
 
 ## Potential Future Extensions
 
