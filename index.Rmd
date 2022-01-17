@@ -282,7 +282,7 @@ class: middle left inverse
 
 # Exercise 2
 
-<!-- TODO: add link to bad script -->
+Grab the *R script* from this [link](https://raw.githubusercontent.com/lenarddome/cleanRcode/main/assets/exercise_bad_example.R).
 
 Here, you will look through a script and do three things:
 
