@@ -104,7 +104,7 @@ add <- function(x, y) {
 }
 ```
 
-Still, don't write an essay!
+Still, don't write an essay.
 
 ]
 
@@ -123,7 +123,7 @@ class: middle left inverse
 # Code Styling
 
 - Consistent spacing.
-- Line length is is below 100.
+- Line length is below 100.
 - Consistent naming with `snake_case`. 
 
 Have a look at the following resources:
@@ -258,7 +258,7 @@ It is easy to read 👓 and easier to debug ⚠️  or hack 👺.
 
 class: middle left inverse
 
-# Exercise 1
+# Exercise 1 (for home)
 
 1. Grab your *incredibly old* R script from a year ago, maybe even try to `source("my_file.R")` to see if you can still run it without any human intervention.
 
@@ -290,18 +290,20 @@ Here, you will look through a script and do three things:
 2. **Write** a function to get rid of redundant code
 3. **Document** said function with `roxygen2`
 
+**Optional.** Create a few tables for the BFs.
+
 ---
 
 class: middle left inverse
 
-# Resources
+# Resource Dump
 
 Here are a list of resources to help you become your better self (*unashamed new-wave bookshop sales pitch*):
 
-1. The Turing Way
-2. renv
-3. Functional Programming in R
-4. Google's R Style Guide
+1. [The Turing Way](https://the-turing-way.netlify.app/welcome.html)
+2. [Functional Programming in R](http://adv-r.had.co.nz/Functional-programming.html)
+3. [R inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
+4. [Google's R Style Guide](https://google.github.io/styleguide/Rguide.html)
 
 ---
 
