@@ -313,7 +313,7 @@ class: middle left inverse
 
 `r emo::ji("email")` lenard.dome@plymouth.ac.uk
 
-slides are availabe at [lenarddome.github.io/cleanRcode](lenarddome.github.io/cleanRcode)
+slides are availabe at [lenarddome.github.io/cleanRcode](https://lenarddome.github.io/cleanRcode/)
 
 ## Potential Future Extensions
 
