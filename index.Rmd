@@ -20,12 +20,18 @@ output:
 options(htmltools.dir.version = FALSE)
 ```
 
-class: middle left inverse
+class: middle center inverse
 
 ```{r, include = FALSE}
 library(emo)
 library(fontawesome)
 ```
+
+![](assets/rory_meme.jpeg)
+
+---
+
+class: middle left inverse
 
 # Today we will focus on:
 
@@ -258,6 +264,38 @@ It is easy to read 👓 and easier to debug ⚠️  or hack 👺.
 
 class: middle left inverse
 
+# Programming with Functions (ggplot2)
+
+If you use the same theme for all your graphs, you can write a function that
+applies your theme to any graph:
+
+```{r, eval = FALSE}
+myTheme <- function(font_size = 16) {
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        axis.line = element_line(size = 1),
+        text = element_text(size = font_size, face = "bold"), 
+        axis.text = element_text(size = font_size, face = "plain",
+                                 colour="black"),
+        legend.title = element_blank(),
+        legend.position = 'top',
+        legend.direction = "horizontal",
+        legend.text = element_text(size = font_size, face = "plain",
+                                   colour = "black"),
+        strip.text.x = element_text(size = font_size, face = "bold"),
+        panel.background = element_rect(fill = 'white', colour = 'white'),
+        strip.background = element_rect(fill = 'white', colour = 'white'),
+        plot.caption = element_text(size = font_size * 0.75)
+        )
+}
+```
+
+---
+
+class: middle left inverse
+
 # Exercise 1 (for home)
 
 1. Grab your *incredibly old* R script from a year ago, maybe even try to `source("my_file.R")` to see if you can still run it without any human intervention.
@@ -289,6 +327,8 @@ Here, you will look through a script and do three things:
 1. **Comment** and **Prettify** code as we discussed it before
 2. **Write** a function to get rid of redundant code
 3. **Document** said function with `roxygen2`
+4. **Write** a function and apply it to two figures.
+
 
 **Optional.** Create a few tables for the BFs.
 

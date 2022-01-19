@@ -4,7 +4,6 @@
     <title>Clean Code in R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lenard Dome" />
-    <script src="index_files/header-attrs/header-attrs.js"></script>
     <link rel="stylesheet" href="libs/default.css" type="text/css" />
     <link rel="stylesheet" href="libs/default-fonts.css" type="text/css" />
   </head>
@@ -15,7 +14,7 @@ class: center, middle, inverse, title-slide
 # Clean Code in R
 ## How to write human-readabe code?
 ### Lenard Dome
-### Jan 17, 2022
+### Jan 19, 2022
 
 ---
 
@@ -23,13 +22,19 @@ class: center, middle, inverse, title-slide
 
 
 
+class: middle center inverse
+
+
+
+![](assets/rory_meme.jpeg)
+
+---
+
 class: middle left inverse
-
-
 
 # Today we will focus on:
 
-- 📄 Documentations and Commenting Code
+- 📜 Documentations and Commenting Code
 - <svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/></svg> Readable Code
 - 🤖 Functional Programming and Programming with Functions
 
@@ -263,6 +268,39 @@ It is easy to read 👓 and easier to debug ⚠️  or hack 👺.
 
 class: middle left inverse
 
+# Programming with Functions (ggplot2)
+
+If you use the same theme for all your graphs, you can write a function that
+applies your theme to any graph:
+
+
+```r
+myTheme &lt;- function(font_size = 16) {
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        axis.line = element_line(size = 1),
+        text = element_text(size = font_size, face = "bold"), 
+        axis.text = element_text(size = font_size, face = "plain",
+                                 colour="black"),
+        legend.title = element_blank(),
+        legend.position = 'top',
+        legend.direction = "horizontal",
+        legend.text = element_text(size = font_size, face = "plain",
+                                   colour = "black"),
+        strip.text.x = element_text(size = font_size, face = "bold"),
+        panel.background = element_rect(fill = 'white', colour = 'white'),
+        strip.background = element_rect(fill = 'white', colour = 'white'),
+        plot.caption = element_text(size = font_size * 0.75)
+        )
+}
+```
+
+---
+
+class: middle left inverse
+
 # Exercise 1 (for home)
 
 1. Grab your *incredibly old* R script from a year ago, maybe even try to `source("my_file.R")` to see if you can still run it without any human intervention.
@@ -295,6 +333,8 @@ Here, you will look through a script and do three things:
 1. **Comment** and **Prettify** code as we discussed it before
 2. **Write** a function to get rid of redundant code
 3. **Document** said function with `roxygen2`
+4. **Write** a function and apply it to two figures.
+
 
 **Optional.** Create a few tables for the BFs.
 
