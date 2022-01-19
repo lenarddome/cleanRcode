@@ -269,6 +269,8 @@ class: middle left inverse
 If you use the same theme for all your graphs, you can write a function that
 applies your theme to any graph:
 
+.pull-left[
+
 ```{r, eval = FALSE}
 myTheme <- function(font_size = 16) {
   theme(panel.grid.major = element_blank(), 
@@ -289,7 +291,22 @@ myTheme <- function(font_size = 16) {
         plot.caption = element_text(size = font_size * 0.75))
 }
 ```
+]
 
+.pull-right[
+
+```{r, eval = FALSE}
+my_plot + myTheme(font_size = 12)
+my_second_plot + myTheme(font_size = 14)
+
+my_data %>%
+  group_by(factor) %>%
+  ggplot(aes(x = variable, y = value, colour = height)) +
+  geom_point(alpha = 0.5) +
+  myTheme(font_size = 10)
+```
+
+]
 ---
 
 class: middle left inverse
